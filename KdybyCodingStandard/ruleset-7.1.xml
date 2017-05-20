@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<ruleset name="Kdyby">
+    <description>Kdyby Coding Standard</description>
+
+    <!-- run also for tests written with Nette/Tester -->
+    <arg name="extensions" value="php,phpt"/>
+
+    <!-- standardize tab width -->
+    <arg name="tab-width" value="4"/>
+
+    <!-- exclude tests temp dir (it's a mess) -->
+    <exclude-pattern>*/tests/temp/*</exclude-pattern>
+    <exclude-pattern>*/tests/tmp/*</exclude-pattern>
+
+    <!-- include consistence rules -->
+    <rule ref="vendor/consistence/coding-standard/Consistence/ruleset.xml">
+        <exclude name="Generic.PHP.LowerCaseConstant"/><!-- using UPPER_CASE NULL, TRUE, FALSE -->
+        <exclude name="Squiz.Commenting.FunctionComment.IncorrectParamVarName"/><!-- checks for long scalar names in PHPDoc, but we use short -->
+        <exclude name="SlevomatCodingStandard.Namespaces.UseOnlyWhitelistedNamespaces.NonFullyQualified"/> <!-- this just prevents using the "use" section -->
+        <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag"/> <!-- I'm not gonna write @param, if it's already in the typehint -->
+        <exclude name="Squiz.PHP.Heredoc"/>
+    </rule>
+
+    <!-- include slevomat rules -->
+    <rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/ruleset.xml"/>
+
+    <!-- using UPPER_CASE NULL, TRUE, FALSE -->
+    <rule ref="Generic.PHP.UpperCaseConstant"/>
+
+    <rule ref="Squiz.PHP.CommentedOutCode" />
+    <rule ref="Squiz.Functions.FunctionDuplicateArgument" />
+
+    <!-- using UPPER_CASE NULL, TRUE, FALSE -->
+    <rule ref="Generic.PHP.BacktickOperator"/>
+    <rule ref="Generic.Commenting.DocComment">
+        <exclude name="Generic.Commenting.DocComment.ContentAfterOpen"/>
+        <exclude name="Generic.Commenting.DocComment.ContentBeforeClose"/>
+        <exclude name="Generic.Commenting.DocComment.MissingShort"/>
+        <exclude name="Generic.Commenting.DocComment.NonParamGroup"/>
+        <exclude name="Generic.Commenting.DocComment.ParamNotFirst"/>
+        <exclude name="Generic.Commenting.DocComment.TagValueIndent"/>
+    </rule>
+    <rule ref="Squiz.Commenting.VariableComment">
+        <exclude name="Squiz.Commenting.VariableComment.TagNotAllowed"/>
+        <exclude name="Squiz.Commenting.VariableComment.VarOrder"/>
+        <exclude name="Squiz.Commenting.VariableComment.IncorrectVarType"/>
+    </rule>
+
+    <!-- allow heredoc in tests -->
+    <rule ref="Squiz.PHP.Heredoc">
+        <exclude-pattern>*.phpt</exclude-pattern>
+    </rule>
+
+    <!-- ignore in tests -->
+    <rule ref="PSR1.Files.SideEffects">
+        <exclude-pattern>*.phpt</exclude-pattern>
+        <exclude-pattern>*/tests/bootstrap.php</exclude-pattern>
+        <exclude-pattern>*/tests/*/bootstrap.php</exclude-pattern>
+    </rule>
+    <!-- ignore in tests -->
+    <rule ref="Squiz.Functions.GlobalFunction">
+        <exclude-pattern>*.phpt</exclude-pattern>
+        <exclude-pattern>*/tests/bootstrap.php</exclude-pattern>
+        <exclude-pattern>*/tests/*/bootstrap.php</exclude-pattern>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
+        <!-- allow grouping of exceptions in one file -->
+        <exclude-pattern>*/exceptions.php</exclude-pattern>
+        <!-- useful for writing files with lot of stub classes -->
+        <exclude-pattern>*/tests/*</exclude-pattern>
+    </rule>
+
+    <rule ref="PSR1.Classes.ClassDeclaration.MultipleClasses">
+        <!-- allow grouping of exceptions in one file -->
+        <exclude-pattern>*/exceptions.php</exclude-pattern>
+        <!-- useful for writing files with lot of stub classes -->
+        <exclude-pattern>*/tests/*</exclude-pattern>
+    </rule>
+    <rule ref="Squiz.Classes.ClassFileName.NoMatch">
+        <!-- more exceptions in one file won't match -->
+        <exclude-pattern>*/exceptions.php</exclude-pattern>
+        <!-- useful for writing files with lot of stub classes -->
+        <exclude-pattern>*/tests/*</exclude-pattern>
+    </rule>
+
+    <rule ref="Generic.Formatting.MultipleStatementAlignment">
+        <properties>
+            <property name="maxPadding" value="0"/>
+            <property name="error" value="true"/>
+        </properties>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Commenting.ForbiddenAnnotations">
+        <properties>
+            <property name="forbiddenAnnotations" type="array" value="@author,@created,@version,@package,@copyright,@license"/>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes">
+        <properties>
+            <property name="newlinesCountBetweenOpenTagAndDeclare" value="2"/>
+            <property name="spacesCountAroundEqualsSign" value="1"/>
+        </properties>
+    </rule>
+    <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
+        <properties>
+            <property name="usefulAnnotations" type="array" value="@covers,@dataProvider,@inject,@testCase"/>
+        </properties>
+    </rule>
+    <!--<rule ref="Squiz.Functions.MultiLineFunctionDeclaration.NewlineBeforeOpenBrace"/>-->
+    <rule ref="Squiz.PHP.ForbiddenFunctions">
+        <properties>
+            <property name="forbiddenFunctions" type="array" value="sizeof=>count,delete=>unset,print=>echo,is_null=>null,create_function=>null,var_dump=>null,dump=>null,print_r=>null"/>
+        </properties>
+    </rule>
+    <rule ref="Squiz.WhiteSpace.FunctionSpacing.After">
+        <severity>5</severity> <!-- turned off by PSR2 -> turning on with default severity -->
+    </rule>
+    <!-- todo solve blank line at the beginning of class enforced by Squiz.WhiteSpace.MemberVarSpacing (https://github.com/squizlabs/PHP_CodeSniffer/issues/725) -->
+    <!-- todo solve blank line at the beginning of class enforced by Squiz.WhiteSpace.FunctionSpacing (https://github.com/squizlabs/PHP_CodeSniffer/issues/652) -->
+    <!-- todo solve blank line at the end of class enforced by Squiz.WhiteSpace.FunctionSpacing.After (https://github.com/consistence/coding-standard/issues/7) -->
+</ruleset>

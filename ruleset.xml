@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ruleset name="Kdyby Coding Standard itself">
+	<rule ref="KdybyCodingStandard/ruleset-7.1.xml"/>
+
+	<rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
+		<properties>
+			<property name="rootNamespaces" type="array" value="
+				KdybyCodingStandard => KdybyCodingStandard,
+				tests => KdybyCodingStandard,
+			"/>
+		</properties>
+	</rule>
+</ruleset>

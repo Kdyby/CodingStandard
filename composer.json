@@ -1,0 +1,19 @@
+{
+    "name": "kdyby/coding-standard",
+    "type": "library",
+    "description": "Kdyby Coding Style",
+    "keywords": ["coding standard", "cs", "coding", "standard", "ruleset", "phpcs", "PHPCodeSniffer", "CodeSniffer", "sniffer"],
+    "homepage": "http://kdyby.org",
+    "license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+    "require": {
+        "php": "^7.1",
+        "consistence/coding-standard": "~1.0.0",
+        "slevomat/coding-standard": "^2.3",
+        "squizlabs/php_codesniffer": "^2.8.1"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
