@@ -8,8 +8,29 @@
     "require": {
         "php": "^7.1",
         "consistence/coding-standard": "~1.0.0",
+        "nette/utils": "^2.3@dev || ^3.0@dev",
         "slevomat/coding-standard": "^2.3",
         "squizlabs/php_codesniffer": "^2.8.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "KdybyCodingStandard\\": "KdybyCodingStandard/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "KdybyCodingStandard\\": "tests/",
+            "SlevomatCodingStandard\\": "vendor/slevomat/coding-standard/tests"
+        }
+    },
+    "config": {
+        "preferred-install": {
+            "slevomat/coding-standard": "source",
+            "*": "dist"
+        }
     },
     "extra": {
         "branch-alias": {

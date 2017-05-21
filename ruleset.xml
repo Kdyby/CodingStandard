@@ -10,4 +10,6 @@
 			"/>
 		</properties>
 	</rule>
+
+	<exclude-pattern>*/tests/*/data/*</exclude-pattern>
 </ruleset>
