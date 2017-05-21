@@ -11,6 +11,17 @@
 	failOnRisky="true"
 	failOnWarning="true"
 >
+	<testsuites>
+		<testsuite name="Kdyby Coding Standard">
+			<directory suffix="Test.php">./</directory>
+			<exclude>
+				<directory>./Sniffs/Files/data</directory>
+				<directory>./Sniffs/Strings/data</directory>
+				<directory>./Sniffs/Whitespace/data</directory>
+			</exclude>
+		</testsuite>
+	</testsuites>
+
 	<filter>
 		<whitelist processUncoveredFilesFromWhitelist="true">
 			<directory suffix=".php">../KdybyCodingStandard</directory>

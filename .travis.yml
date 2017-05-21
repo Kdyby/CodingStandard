@@ -16,7 +16,7 @@ install:
   - travis_retry wget -O /tmp/coveralls.phar https://github.com/satooshi/php-coveralls/releases/download/v1.0.1/coveralls.phar
 
 script:
-  - php vendor/bin/phpunit --coverage-clover tests/coverage.xml -c tests/phpunit.xml tests/
+  - php vendor/bin/phpunit --coverage-clover tests/coverage.xml -c tests/phpunit.xml
   - php /tmp/php-parallel-lint/parallel-lint.php -e php,phpt --exclude vendor .
   - php vendor/bin/phpcs --standard=ruleset.xml --encoding=utf-8 -sp KdybyCodingStandard/ tests/
   - php vendor/phpstan/phpstan-shim/phpstan.phar analyse --ansi --no-progress -l7 -c phpstan.neon KdybyCodingStandard/ tests/

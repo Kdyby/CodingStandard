@@ -33,19 +33,5 @@ To allow customization, just include one of the standards (either `ruleset-5.6.x
     <rule ref="vendor/kdyby/coding-standard/KdybyCodingStandard/ruleset-7.1.xml"/>
 
     <!-- custom settings -->
-    <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
-        <properties>
-            <property name="rootNamespaces" type="array" value="
-                src => Kdyby\Annotations,
-                tests/KdybyTests => KdybyTests\Annotations,
-            "/>
-        </properties>
-
-        <!-- these two excludes are configured in KdybyCodingStandard, but if you override the rule settings, you have to include them again -->
-        <!-- allow grouping of exceptions in one file -->
-        <exclude-pattern>*/exceptions.php</exclude-pattern>
-        <!-- useful for writing files with lot of stub classes -->
-        <exclude-pattern>*/tests/*</exclude-pattern>
-    </rule>
 </ruleset>
 ```

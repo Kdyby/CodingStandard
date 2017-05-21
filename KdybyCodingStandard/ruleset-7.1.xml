@@ -22,7 +22,9 @@
     </rule>
 
     <!-- include slevomat rules -->
-    <rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/ruleset.xml"/>
+    <rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/ruleset.xml">
+        <exclude name="SlevomatCodingStandard.Files.TypeNameMatchesFileName"/>
+    </rule>
 
     <!-- using UPPER_CASE NULL, TRUE, FALSE -->
     <rule ref="Generic.PHP.UpperCaseConstant"/>
@@ -64,11 +66,13 @@
         <exclude-pattern>*/tests/*/bootstrap.php</exclude-pattern>
     </rule>
 
-    <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
-        <!-- allow grouping of exceptions in one file -->
-        <exclude-pattern>*/exceptions.php</exclude-pattern>
-        <!-- useful for writing files with lot of stub classes -->
-        <exclude-pattern>*/tests/*</exclude-pattern>
+    <rule ref="KdybyCodingStandard.Files.TypeNameMatchesFileName">
+        <properties>
+            <property name="extensions" type="array" value="php,phpt"/>
+            <property name="skipDirs" type="array" value="
+				data,
+			"/>
+        </properties>
     </rule>
 
     <rule ref="PSR1.Classes.ClassDeclaration.MultipleClasses">
