@@ -29,7 +29,6 @@
     <!-- using UPPER_CASE NULL, TRUE, FALSE -->
     <rule ref="Generic.PHP.UpperCaseConstant"/>
 
-    <rule ref="Squiz.PHP.CommentedOutCode" />
     <rule ref="Squiz.Functions.FunctionDuplicateArgument" />
 
     <!-- using UPPER_CASE NULL, TRUE, FALSE -->
