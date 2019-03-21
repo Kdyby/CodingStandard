@@ -17,7 +17,7 @@ composer require --dev kdyby/coding-standard
 
 ## Usage
 
-There are two standards defined, one for PHP 5.6 and one for PHP 7.1.
+There is a standard for PHP 7.1+
 
 ```bash
 vendor/bin/phpcs --standard=vendor/kdyby/coding-standard/KdybyCodingStandard/ruleset-7.1.xml --encoding=utf-8 -sp src tests
@@ -25,7 +25,7 @@ vendor/bin/phpcs --standard=vendor/kdyby/coding-standard/KdybyCodingStandard/rul
 
 ## Customization
 
-To allow customization, just include one of the standards (either `ruleset-5.6.xml` or `ruleset-7.1.xml`) in you project's `ruleset.xml`, depending on the minimal version supported.
+To allow customization, just include the `ruleset-7.1.xml` standard in you project's `ruleset.xml`
 
 ```xml
 <?xml version="1.0"?>
