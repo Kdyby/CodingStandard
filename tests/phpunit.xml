@@ -14,11 +14,9 @@
 	<testsuites>
 		<testsuite name="Kdyby Coding Standard">
 			<directory suffix="Test.php">./</directory>
-			<exclude>
-				<directory>./Sniffs/Files/data</directory>
-				<directory>./Sniffs/Strings/data</directory>
-				<directory>./Sniffs/Whitespace/data</directory>
-			</exclude>
+			<exclude>./Sniffs/Files/data</exclude>
+			<exclude>./Sniffs/Strings/data</exclude>
+			<exclude>./Sniffs/Whitespace/data</exclude>
 		</testsuite>
 	</testsuites>
 

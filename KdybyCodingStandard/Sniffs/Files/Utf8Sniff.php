@@ -13,9 +13,9 @@ declare(strict_types = 1);
 namespace KdybyCodingStandard\Sniffs\Files;
 
 use Nette\Utils\Strings;
-use PHP_CodeSniffer_File;
+use PHP_CodeSniffer\Files\File;
 
-class Utf8Sniff implements \PHP_CodeSniffer_Sniff
+class Utf8Sniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
 	public const CODE_CONTAINS_INVALID_CHARACTERS = 'ContainsInvalidCharacters';
@@ -30,12 +30,12 @@ class Utf8Sniff implements \PHP_CodeSniffer_Sniff
 
 	/**
 	 * @see https://github.com/nette/code-checker/blob/3cd542ddbdf38f54ec445da17c4004256ef5a181/src/code-checker.php
-	 *
 	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer_File $phpcsFile
+	 * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
+	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $stackPtr
 	 */
-	public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr): void
+	public function process(File $phpcsFile, $stackPtr): void
 	{
 		$fileName = $phpcsFile->getFilename();
 		$lines = preg_split('~(\\r\\n|\\r|\\n)~', file_get_contents($fileName));

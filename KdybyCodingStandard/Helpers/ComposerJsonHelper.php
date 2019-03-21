@@ -38,7 +38,7 @@ class ComposerJsonHelper
 
 	/**
 	 * @param string $composerFile
-	 * @return string[][]
+	 * @return array<string, array<string, string[]>>|array<string, string[]>
 	 */
 	public static function loadPsrAutoLoaderDefinition(string $composerFile): array
 	{
