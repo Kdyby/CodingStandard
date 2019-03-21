@@ -5,7 +5,7 @@ declare(strict_types = 1);
 namespace KdybyCodingStandard\Sniffs\Files;
 
 use KdybyCodingStandard\Helpers\ComposerJsonHelper;
-use PHP_CodeSniffer_File;
+use PHP_CodeSniffer\Files\File;
 use SlevomatCodingStandard\Helpers\ClassHelper;
 use SlevomatCodingStandard\Helpers\NamespaceHelper;
 use SlevomatCodingStandard\Helpers\SniffSettingsHelper;
@@ -13,7 +13,7 @@ use SlevomatCodingStandard\Helpers\StringHelper;
 use SlevomatCodingStandard\Helpers\SuppressHelper;
 use SlevomatCodingStandard\Sniffs\Files\FilepathNamespaceExtractor;
 
-class TypeNameMatchesFileNameSniff implements \PHP_CodeSniffer_Sniff
+class TypeNameMatchesFileNameSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
 	public const NAME = 'KdybyCodingStandard.Files.TypeNameMatchesFileName';
@@ -30,10 +30,10 @@ class TypeNameMatchesFileNameSniff implements \PHP_CodeSniffer_Sniff
 	/** @var bool */
 	public $allowExceptionsFile = TRUE;
 
-	/** @var string[] path(string) => namespace */
+	/** @var array<string, string> path(string) => namespace */
 	public $rootNamespaces = [];
 
-	/** @var string[] path(string) => namespace */
+	/** @var array<string, string> path(string) => namespace */
 	private $normalizedRootNamespaces;
 
 	/** @var string[] */
@@ -61,7 +61,7 @@ class TypeNameMatchesFileNameSniff implements \PHP_CodeSniffer_Sniff
 	}
 
 	/**
-	 * @return string[] path(string) => namespace
+	 * @return array<string, string> path(string) => namespace
 	 */
 	private function getRootNamespaces(): array
 	{
@@ -123,10 +123,10 @@ class TypeNameMatchesFileNameSniff implements \PHP_CodeSniffer_Sniff
 
 	/**
 	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer_File $phpcsFile
+	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $typePointer
 	 */
-	public function process(PHP_CodeSniffer_File $phpcsFile, $typePointer): void
+	public function process(File $phpcsFile, $typePointer): void
 	{
 		$tokens = $phpcsFile->getTokens();
 		$namePointer = (int) $phpcsFile->findNext(T_STRING, $typePointer + 1);
@@ -212,7 +212,7 @@ class TypeNameMatchesFileNameSniff implements \PHP_CodeSniffer_Sniff
 		return substr($typeName, -9) === 'Exception';
 	}
 
-	private function isInExceptionsFile(PHP_CodeSniffer_File $phpcsFile): bool
+	private function isInExceptionsFile(File $phpcsFile): bool
 	{
 		return basename($phpcsFile->getFilename()) === 'exceptions.php';
 	}

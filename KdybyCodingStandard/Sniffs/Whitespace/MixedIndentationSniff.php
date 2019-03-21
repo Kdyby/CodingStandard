@@ -12,9 +12,9 @@ declare(strict_types = 1);
 
 namespace KdybyCodingStandard\Sniffs\Whitespace;
 
-use PHP_CodeSniffer_File;
+use PHP_CodeSniffer\Files\File;
 
-class MixedIndentationSniff implements \PHP_CodeSniffer_Sniff
+class MixedIndentationSniff implements \PHP_CodeSniffer\Sniffs\Sniff
 {
 
 	public const CODE_UNEXPECTED_SPACE = 'UnexpectedSpace';
@@ -28,7 +28,7 @@ class MixedIndentationSniff implements \PHP_CodeSniffer_Sniff
 	public $tabIndent = TRUE;
 
 	/**
-	 * @var mixed[]
+	 * @var array<int|string>
 	 */
 	private static $whitespaceTokens = [
 		T_WHITESPACE,
@@ -36,7 +36,7 @@ class MixedIndentationSniff implements \PHP_CodeSniffer_Sniff
 	];
 
 	/**
-	 * @return int[]
+	 * @return array<int|string>
 	 */
 	public function register(): array
 	{
@@ -45,11 +45,11 @@ class MixedIndentationSniff implements \PHP_CodeSniffer_Sniff
 
 	/**
 	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
-	 * @param \PHP_CodeSniffer_File $phpcsFile
+	 * @param \PHP_CodeSniffer\Files\File $phpcsFile
 	 * @param int $stackPtr
 	 * @return int|NULL
 	 */
-	public function process(PHP_CodeSniffer_File $phpcsFile, $stackPtr): ?int
+	public function process(File $phpcsFile, $stackPtr): ?int
 	{
 		$tokens = $phpcsFile->getTokens();
 		$token = $tokens[$stackPtr];
@@ -97,18 +97,18 @@ class MixedIndentationSniff implements \PHP_CodeSniffer_Sniff
 	}
 
 	/**
-	 * @param mixed[] $token
+	 * @param array<string, mixed> $token
 	 * @return string
 	 */
 	private static function getOriginalContent(array $token): string
 	{
-		return (array_key_exists('orig_content', $token) && $token['orig_content'] !== $token['content'])
+		return array_key_exists('orig_content', $token) && $token['orig_content'] !== $token['content']
 			? $token['orig_content']
 			: $token['content'];
 	}
 
 	/**
-	 * @param mixed[] $token
+	 * @param array<string, mixed> $token
 	 * @param string $eol
 	 * @return bool
 	 */
@@ -119,7 +119,7 @@ class MixedIndentationSniff implements \PHP_CodeSniffer_Sniff
 	}
 
 	/**
-	 * @param mixed[] $token
+	 * @param array<string, mixed> $token
 	 * @param string $eol
 	 * @return bool
 	 */
@@ -130,7 +130,7 @@ class MixedIndentationSniff implements \PHP_CodeSniffer_Sniff
 	}
 
 	/**
-	 * @param mixed[] $token
+	 * @param array<string, mixed> $token
 	 * @return bool
 	 */
 	private static function isPhpDocStarColumn(array $token): bool
