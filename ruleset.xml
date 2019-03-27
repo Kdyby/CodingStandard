@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <ruleset name="Kdyby Coding Standard itself">
-	<rule ref="KdybyCodingStandard/ruleset-7.1.xml"/>
+    <rule ref="./KdybyCodingStandard/ruleset-7.1.xml"/>
 
 	<exclude-pattern>*/tests/*/data/*</exclude-pattern>
 </ruleset>
