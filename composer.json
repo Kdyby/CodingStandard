@@ -6,7 +6,7 @@
     "homepage": "http://kdyby.org",
     "license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
     "require": {
-        "php": "^7.1",
+        "php": ">=7.1",
         "consistence/coding-standard": "^3.8",
         "nette/utils": "^2.3@dev || ^3.0@dev",
         "slevomat/coding-standard": "^5.0",
