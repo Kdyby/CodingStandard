@@ -7,7 +7,9 @@ cache:
         - $HOME/.composer/cache
 
 php:
-  - 7.1
+  - 7.3
+  - 7.4
+  - 8.0
 
 install:
   - travis_retry composer update --no-interaction --no-suggest --no-progress --prefer-stable
@@ -17,7 +19,7 @@ script:
   - php vendor/bin/phpunit --coverage-clover tests/coverage.xml -c tests/phpunit.xml
   - php vendor/bin/parallel-lint -e php,phpt --exclude vendor .
   - php vendor/bin/phpcs --standard=ruleset.xml --encoding=utf-8 -sp KdybyCodingStandard/ tests/
-  - php vendor/bin/phpstan.phar analyse --ansi --no-progress
+  - php vendor/bin/phpstan analyse --ansi --no-progress
 
 after_script:
   - php /tmp/coveralls.phar --verbose --config tests/.coveralls.yml || true
