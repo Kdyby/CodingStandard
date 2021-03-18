@@ -12,18 +12,6 @@
     <exclude-pattern>*/tests/temp/*</exclude-pattern>
     <exclude-pattern>*/tests/tmp/*</exclude-pattern>
 
-    <!-- include consistence rules -->
-    <rule ref="vendor/consistence/coding-standard/Consistence/ruleset.xml">
-        <exclude name="Consistence.Exceptions.ExceptionDeclaration.IncorrectExceptionDirectory"/>
-        <exclude name="Generic.Commenting.DocComment.ShortNotCapital"/>
-        <exclude name="Generic.Commenting.DocComment.SpacingBeforeShort"/>
-        <exclude name="Generic.PHP.LowerCaseConstant"/><!-- using UPPER_CASE NULL, TRUE, FALSE -->
-        <exclude name="Squiz.Commenting.FunctionComment.IncorrectParamVarName"/><!-- checks for long scalar names in PHPDoc, but we use short -->
-        <exclude name="SlevomatCodingStandard.Namespaces.UseOnlyWhitelistedNamespaces.NonFullyQualified"/> <!-- this just prevents using the "use" section -->
-        <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag"/> <!-- I'm not gonna write @param, if it's already in the typehint -->
-        <exclude name="Squiz.PHP.Heredoc"/>
-    </rule>
-
     <!-- include slevomat rules -->
     <rule ref="vendor/slevomat/coding-standard/SlevomatCodingStandard/ruleset.xml">
         <exclude name="SlevomatCodingStandard.Classes.SuperfluousExceptionNaming.SuperfluousSuffix"/>
@@ -132,11 +120,6 @@
         <properties>
             <property name="newlinesCountBetweenOpenTagAndDeclare" value="2"/>
             <property name="spacesCountAroundEqualsSign" value="1"/>
-        </properties>
-    </rule>
-    <rule ref="SlevomatCodingStandard.TypeHints.TypeHintDeclaration">
-        <properties>
-            <property name="usefulAnnotations" type="array" value="@covers,@dataProvider,@inject,@testCase"/>
         </properties>
     </rule>
     <!--<rule ref="Squiz.Functions.MultiLineFunctionDeclaration.NewlineBeforeOpenBrace"/>-->

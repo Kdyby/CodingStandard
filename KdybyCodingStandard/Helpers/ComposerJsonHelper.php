@@ -34,6 +34,8 @@ class ComposerJsonHelper
 			$dir = $parent;
 
 		} while ($parent !== $cwd); // do not escape working directory
+
+		return NULL;
 	}
 
 	/**
